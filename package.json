@@ -10,7 +10,7 @@
     "test": "jest",
     "test:watch": "jest --watch"
   },
-  "author": "",
+  "author": "Juan Versolato Lopes",
   "license": "MIT",
   "dependencies": {
     "next": "^13.1.6",
