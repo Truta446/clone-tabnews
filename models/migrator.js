@@ -27,7 +27,7 @@ async function listPendingMigrations() {
   }
 }
 
-async function runPendingMigrations(request, response) {
+async function runPendingMigrations() {
   let dbClient;
 
   try {
