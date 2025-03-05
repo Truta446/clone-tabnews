@@ -1,4 +1,5 @@
 import { Client } from "pg";
+import { ServiceError } from "infra/errors.js";
 
 const query = async (queryObject) => {
   let client;
@@ -7,10 +8,13 @@ const query = async (queryObject) => {
     const result = await client.query(queryObject);
     return result;
   } catch (error) {
-    console.error(error);
-    throw error;
+    const serviceErrorObject = new ServiceError({
+      cause: error,
+      message: "Erro na conexão com o banco ou na query.",
+    });
+    throw serviceErrorObject;
   } finally {
-    client.end();
+    await client?.end();
   }
 };
 
